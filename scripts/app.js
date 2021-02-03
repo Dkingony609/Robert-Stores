@@ -1,6 +1,6 @@
 function addItem() {
 
-  let ul = document.getElementsByClassName("cards");
+  let cards = document.getElementById("cards");
 
   let customerID = document.getElementById("customer_id");
   let stocks = document.getElementById("stocks");
@@ -8,24 +8,20 @@ function addItem() {
   let dateOfSale = document.getElementById("dateofsale");
   let paymentMethod = document.getElementById("payment_method");
 
-  let li = document.createElement("li");
+  let panel = document.createElement("li");
 
-  li.setAttribute('id', customerID.value);
-  li.setAttribute('id', stocks.value);
-  li.setAttribute('id', amount.value);
-  li.setAttribute('id', dateOfSale.value);
-  li.setAttribute('id', paymentMethod.value);
+  panel.setAttribute('cards', stocks.value);
+  panel.setAttribute('cards', customerID.value);
+  panel.setAttribute('cards', amount.value);
+  panel.setAttribute('cards', dateOfSale.value);
+  panel.setAttribute('cards', paymentMethod.value);
 
-  li.appendChild(document.createTextNode(customerID.value));
-  li.appendChild(document.createTextNode(stocks.value));
-  li.appendChild(document.createTextNode(amount.value));
-  li.appendChild(document.createTextNode(dateOfSale.value));
-  li.appendChild(document.createTextNode(paymentMethod.value));
+  panel.appendChild(document.createTextNode(customerID.value));
+  panel.appendChild(document.createTextNode(stocks.value));
+  panel.appendChild(document.createTextNode(amount.value));
+  panel.appendChild(document.createTextNode(dateOfSale.value));
+  panel.appendChild(document.createTextNode(paymentMethod.value));
 
-  // console.log(customerID.value, stocks.value, amount.value, dateOfSale.value, paymentMethod.value);
 
-  ul.appendChild(li);
-
+  cards.appendChild(panel);
 }
-
-// console.log(addItem);
