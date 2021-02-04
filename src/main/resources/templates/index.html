@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
           rel="stylesheet">
     <script src="https://kit.fontawesome.com/98aee29468.js" crossorigin="anonymous"></script>
     <!-- <script src="./scripts/main.js"></script> -->
-    <script src="./scripts/app.js"></script>
+
 </head>
 <body>
 
@@ -19,7 +19,7 @@
     <h3> Robert Supermarket </h3>
 </header>
 
-
+<div class="successful-save" id="successful-save" th:if="saved">Record Saved Successfully</div>
 <main>
     <section class="glass">
         <div class="dashboard">
@@ -58,40 +58,40 @@
             <div class="modal-info">
                 <div class="info">
 
-                    <form>
+                    <form th:action="${formAction}" th:object="${formObject}" method="post">
 
                         <div class="fname">
-                            <i class="fas fa-user"></i></i><label> Customer ID </label><br>
-                            <input type="text" placeholder=" Give an ID " id="customer_id" required>
+                            <i class="fas fa-user"></i></i><label for="customer_id"> Customer Name</label><br>
+                            <input th:field="*{customerName}" type="text" placeholder=" Customer Name " id="customer_id" required>
                         </div>
 
                         <div class="products">
-                            <i class="fas fa-shopping-basket"></i><label> Stock Purchased </label><br>
-                            <input type="text" placeholder=" Enter Products " id="stocks" required>
+                            <i class="fas fa-shopping-basket"></i><label for="stocks"> Stock Purchased </label><br>
+                            <input th:field="*{purchases}" type="text" placeholder=" Enter Products " id="stocks" required>
                         </div>
 
                         <div class="amount">
-                            <i class="fas fa-money-check-alt"></i><label> Total Amount (₦) </label><br>
-                            <input type="text" placeholder=" Enter Amount " id="amount" required>
+                            <i class="fas fa-money-check-alt"></i><label for="amount"> Total Amount (₦) </label><br>
+                            <input th:field="*{amount}" type="text" placeholder=" Enter Amount " id="amount" required>
                         </div>
 
                         <div class="date">
-                            <i class="fas fa-calendar-day"></i><label> Date Of Sale </label><br>
-                            <input class="month" type="text" required id="dateofsale" placeholder="DD/MM/YYYY">
+                            <i class="fas fa-calendar-day"></i><label for="dateofsale"> Date Of Sale </label><br>
+                            <input class="month" type="date" th:field="*{date}" required id="dateofsale" placeholder="DD/MM/YYYY">
                         </div>
 
                         <div class="payment">
-                            <i class="far fa-credit-card"></i><label> Payment Method </label><br>
-                            <select name="payment_method" id="payment_method">
+                            <i class="far fa-credit-card"></i><label for="payment_method"> Payment Method </label><br>
+                            <select required id="payment_method" th:field="*{paymentMethod}">
                                 <option value="">-Select Payment Method-</option>
                                 <option value="Cash">Cash</option>
                                 <option value="Cheque">Cheque</option>
-                                <option value="Net Banking">Net Banking</option>
-                                <option value="Debit Card">Debit Card</option>
+                                <option value="NetBanking">Net Banking</option>
+                                <option value="POS">POS</option>
                             </select>
                         </div>
 
-                        <button type="button" id="save_button" onclick="addItem()"> Save</button>
+                        <button type="submit" id="save_button"> Save</button>
                     </form>
                 </div>
             </div>
@@ -110,5 +110,6 @@
 <div class="circle2"></div>
 
 <footer id="footer"> &copy; Copyright CSC 2021 Copyright Robert Supermarket.</footer>
+<script src="./scripts/app.js"></script>
 </body>
 </html>

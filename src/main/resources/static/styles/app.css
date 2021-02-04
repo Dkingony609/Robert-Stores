@@ -4,6 +4,25 @@
   box-sizing: border-box;
 }
 
+ul {
+  list-style-type: none;
+}
+
+.successful-save {
+  position: fixed;
+  top: 10%;
+  margin: 0 auto;
+  padding: 10px;
+  left: 40%;
+  z-index: 1000;
+  color: #426696;
+  height: 50px;
+  background: white;
+  border: 2px solid #426696;
+  border-radius: 10px;
+  animation: saveanim 10s;
+}
+
 h1 {
   color: #426696;
   font-weight: 600;
@@ -113,8 +132,8 @@ main {
 
 .link {
   display: flex;
-  margin: 2rem, 0rem;
-  padding: 1rem, 5rem;
+  margin: 2rem 0rem;
+  padding: 1rem 5rem;
   align-items: center;
   background: linear-gradient(
     to right bottom,
@@ -233,10 +252,11 @@ option {
 
 form button {
   padding: 10px;
-  background-color: 426696;
+  background-color: #426696;
   border-radius: 10px;
   font-family: "Poppins", sans-serif;
   font-size: 15px;
+  color: #fff;
   margin-left: 30%;
   width: 20%;
   outline: 0;
@@ -244,9 +264,18 @@ form button {
 }
 
 button:hover {
-  color: green;
+  background: white;
+  color: #426696;
 }
 
-ul {
-  list-style-type: none;
+@keyframes saveanime {
+
+  from {
+
+  }
+
+  to {
+    display: none;
+  }
+
 }
