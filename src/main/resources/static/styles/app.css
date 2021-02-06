@@ -64,6 +64,7 @@ p {
 }
 
 main {
+  min-width: 800px;
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
   background: linear-gradient(to right top, #65dfc9, #6cdbeb);
@@ -74,6 +75,7 @@ main {
 
 .glass {
   background: white;
+  min-width: 600px;
   min-height: 80vh;
   width: 60%;
   background: linear-gradient(
@@ -119,7 +121,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   text-align: center;
   background: linear-gradient(
     to right bottom,
@@ -132,8 +134,6 @@ main {
 
 .link {
   display: flex;
-  margin: 2rem 0rem;
-  padding: 1rem 5rem;
   align-items: center;
   background: linear-gradient(
     to right bottom,
@@ -153,7 +153,7 @@ main {
   border-radius: 2rem;
   color: white;
   padding: 1rem;
-  font-weight: 600;
+  margin-bottom: 10px;
   width: 60%;
   font-weight: bold;
 }
@@ -249,15 +249,22 @@ form select {
 option {
   font-family: "Poppins", sans-serif;
 }
+.button-area {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 form button {
+
   padding: 10px;
   background-color: #426696;
   border-radius: 10px;
   font-family: "Poppins", sans-serif;
-  font-size: 15px;
+  font-size: 0.9rem;
   color: #fff;
-  margin-left: 30%;
   width: 20%;
   outline: 0;
   border-width: 0;
