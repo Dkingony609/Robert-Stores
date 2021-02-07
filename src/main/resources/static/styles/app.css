@@ -282,10 +282,6 @@ button:hover {
   color: #426696;
 }
 
-#add-sales {
-  display: none;
-}
-
 #saleslog ul li {
   display: flex;
   justify-content: space-between;
@@ -298,7 +294,7 @@ button:hover {
   justify-content: space-between;
 }
 
-.price > span {
+div.price  span:first-child {
   font-weight: bold;
 }
 
