@@ -5,11 +5,14 @@ import com.misprojects.robertssupermarket.model.Sales;
 import com.misprojects.robertssupermarket.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 /**
  * @author Ibekason Alexander
@@ -43,6 +46,8 @@ public class StoreController {
 
     @GetMapping("logs")
     public String getLogs(Model model){
+        List<Sales> sales = storeRepository.findByStaff(SecurityContextHolder.getContext().getAuthentication().getName().toLowerCase());
+        model.addAttribute("sales", sales);
         return "logs";
     }
 }
