@@ -40,4 +40,9 @@ public class StoreController {
         storeRepository.save(sales);
         return "index";
     }
+
+    @GetMapping("logs")
+    public String getLogs(Model model){
+        return "logs";
+    }
 }

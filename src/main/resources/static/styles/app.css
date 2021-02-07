@@ -8,6 +8,10 @@ ul {
   list-style-type: none;
 }
 
+body {
+    min-width: 800px;
+}
+
 .successful-save {
   position: fixed;
   top: 10%;
@@ -64,7 +68,7 @@ p {
 }
 
 main {
-  min-width: 800px;
+
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
   background: linear-gradient(to right top, #65dfc9, #6cdbeb);
@@ -77,6 +81,7 @@ main {
   background: white;
   min-width: 600px;
   min-height: 80vh;
+  max-height: 500px;
   width: 60%;
   background: linear-gradient(
     to right bottom,
@@ -160,6 +165,7 @@ main {
 }
 
 .archives {
+  overflow-y: scroll;
   flex: 2;
   padding: 20px;
   /* display: flex; */
@@ -274,6 +280,26 @@ form button {
 button:hover {
   background: white;
   color: #426696;
+}
+
+#add-sales {
+  display: none;
+}
+
+#saleslog ul li {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+#saleslog ul li .price {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.price > span {
+  font-weight: bold;
 }
 
 @keyframes saveanime {

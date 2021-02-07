@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<th:block th:fragment="addsales">
+    <div id="add-sales">
+        <div class="status">
+            <h1> Sales Information </h1>
+        </div>
+
+        <div class="modal-info">
+            <div class="info">
+
+                <form th:action="${formAction}" th:object="${formObject}" method="post">
+
+                    <div class="fname">
+                        <i class="fas fa-user"></i></i><label for="customer_id"> Customer Name</label><br>
+                        <input th:field="*{customerName}" type="text" placeholder=" Customer Name "
+                               id="customer_id" required>
+                    </div>
+
+                    <div class="products">
+                        <i class="fas fa-shopping-basket"></i><label for="stocks"> Stock Purchased </label><br>
+                        <input th:field="*{purchases}" type="text" placeholder=" Enter Products " id="stocks"
+                               required>
+                    </div>
+
+                    <div class="amount">
+                        <i class="fas fa-money-check-alt"></i><label for="amount"> Total Amount (₦) </label><br>
+                        <input th:field="*{amount}" type="text" placeholder=" Enter Amount " id="amount"
+                               required>
+                    </div>
+
+                    <div class="date">
+                        <i class="fas fa-calendar-day"></i><label for="dateofsale"> Date Of Sale </label><br>
+                        <input class="month" type="date" th:field="*{date}" required id="dateofsale"
+                               placeholder="DD/MM/YYYY">
+                    </div>
+
+                    <div class="payment">
+                        <i class="far fa-credit-card"></i><label for="payment_method"> Payment
+                        Method </label><br>
+                        <select required id="payment_method" th:field="*{paymentMethod}">
+                            <option value="">-Select Payment Method-</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Cheque">Cheque</option>
+                            <option value="NetBanking">Net Banking</option>
+                            <option value="POS">POS</option>
+                        </select>
+                    </div>
+
+                    <div class="button-area">
+                        <button type="submit" id="save_button"> Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+</html>

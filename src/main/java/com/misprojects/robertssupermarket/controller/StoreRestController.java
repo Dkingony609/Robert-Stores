@@ -20,38 +20,38 @@ public class StoreRestController {
 
     private final StoreRepository storeRepository;
 
+
     @GetMapping("")
-    public List<Sales> getAllSales(){
+    public List<Sales> getAllSales() {
         return storeRepository.findAll();
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<?> deleteSales(@PathVariable("id") long id){
+    public ResponseEntity<?> deleteSales(@PathVariable("id") long id) {
         storeRepository.findById(id).ifPresent(storeRepository::delete);
         return ResponseEntity.ok(null);
     }
 
     @GetMapping("{id}")
-    public Sales getSaleByID(@PathVariable long id){
+    public Sales getSaleByID(@PathVariable long id) {
         return storeRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     @PatchMapping("{id}")
-    public Sales updateSales(@PathVariable("id") long id, @RequestBody SalesInfoDto salesInfoDto){
+    public Sales updateSales(@PathVariable("id") long id, @RequestBody SalesInfoDto salesInfoDto) {
         Sales sales = storeRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         sales.setAmount(salesInfoDto.getAmount())
-        .setPaymentMethod(PaymentMethods.valueOf(salesInfoDto.getPaymentMethod().toUpperCase()))
-        .setCustomerName(salesInfoDto.getCustomerName())
-        .setPurchases(Stream.of(salesInfoDto.getPurchases().split(",")).collect(Collectors.toList()));
+                .setPaymentMethod(PaymentMethods.valueOf(salesInfoDto.getPaymentMethod().toUpperCase()))
+                .setCustomerName(salesInfoDto.getCustomerName())
+                .setPurchases(Stream.of(salesInfoDto.getPurchases().split(",")).collect(Collectors.toList()));
         return storeRepository.save(sales);
 
     }
 
     @GetMapping("staff")
-    public List<Sales> getSalesByStaff(@RequestParam("name") String name){
+    public List<Sales> getSalesByStaff(@RequestParam("name") String name) {
         return storeRepository.findByStaff(name.toLowerCase());
     }
-
 
 
 }
