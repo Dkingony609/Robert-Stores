@@ -165,7 +165,7 @@ main {
 }
 
 .archives {
-  overflow-y: scroll;
+  overflow-y: auto;
   flex: 2;
   padding: 20px;
   /* display: flex; */

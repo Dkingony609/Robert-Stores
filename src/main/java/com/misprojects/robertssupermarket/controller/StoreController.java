@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Ibekason Alexander
- *
  */
 
 @RequiredArgsConstructor
@@ -26,17 +27,16 @@ public class StoreController {
     private final StoreRepository storeRepository;
 
     @GetMapping("")
-    public String getHome(Model model){
-        model.addAttribute("formObject",new SalesInfoDto());
+    public String getHome(Model model) {
+        model.addAttribute("formObject", new SalesInfoDto());
         model.addAttribute("formAction", "save");
         return "index";
     }
 
     @PostMapping("save")
-    public String saveSales(Model model, @ModelAttribute("formObject") SalesInfoDto salesInfo){
-        log.info(salesInfo.toString());
-//        model.addAttribute("saved", true);
-        model.addAttribute("formObject",new SalesInfoDto());
+    public String saveSales(Model model, @ModelAttribute("formObject") SalesInfoDto salesInfo) {
+        model.addAttribute("saved", true);
+        model.addAttribute("formObject", new SalesInfoDto());
         model.addAttribute("formAction", "save");
         Sales sales = SaleInfoToSalesMapper.toSales(salesInfo);
 
@@ -45,8 +45,12 @@ public class StoreController {
     }
 
     @GetMapping("logs")
-    public String getLogs(Model model){
-        List<Sales> sales = storeRepository.findByStaff(SecurityContextHolder.getContext().getAuthentication().getName().toLowerCase());
+    public String getLogs(Model model) {
+        String loggedUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        List<SalesInfoDto> sales = storeRepository.findByStaff(loggedUser.toLowerCase())
+                .stream().map(SaleInfoToSalesMapper::toSalesInfoDto)
+                .collect(Collectors.toList());
+        Collections.reverse(sales);
         model.addAttribute("sales", sales);
         return "logs";
     }

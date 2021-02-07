@@ -28,4 +28,13 @@ public class SaleInfoToSalesMapper {
         return sales;
 
     }
+
+    public static SalesInfoDto toSalesInfoDto(Sales sales){
+        return new SalesInfoDto()
+                .setAmount(sales.getAmount())
+                .setCustomerName(sales.getCustomerName())
+                .setDate(sales.getDate())
+                .setPurchases(String.join(",", sales.getPurchases()))
+                ;
+    }
 }

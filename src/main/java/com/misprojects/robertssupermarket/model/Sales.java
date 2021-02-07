@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class Sales {
     private String customerName;
     @ElementCollection
     private List<String> purchases;
-    private Date date = new Date();
+    private String date = new SimpleDateFormat("E, dd MMM yyyy HH:mm").format(new Date());
     private String amount;
     @Enumerated(value = EnumType.STRING)
     private PaymentMethods paymentMethod;

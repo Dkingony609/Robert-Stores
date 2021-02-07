@@ -7,51 +7,12 @@
         <h1>Sales Log</h1>
     </div>
     <div class="modal-info">
-        <ul>
+        <ul th:each="sale, index : ${sales}">
+
             <li>
-                <div><h4>Shawarma</h4>
-                    <span><small>By</small> Chinedu Kingsley</span></div>
-                <div><span class="price"> $44,232</span><span class="time">07/02/2021</span></div>
-            </li>
-            <li>
-                <div><h4>Shawarma</h4>
-                    <span><small>By</small> Chinedu Kingsley</span></div>
-                <div><span class="price"> $44,232</span><span class="time">07/02/2021</span></div>
-            </li>
-            <li>
-                <div><h4>Shawarma</h4>
-                    <span><small>By</small> Chinedu Kingsley</span></div>
-                <div class="price"><span> $44,232</span><span class="time">07/02/2021</span></div>
-            </li>
-            <li>
-                <div><h4>Shawarma</h4>
-                    <span><small>By</small> Chinedu Kingsley</span></div>
-                <div class="price"><span> $44,232</span><span class="time">07/02/2021</span></div>
-            </li>
-            <li>
-                <div><h4>Shawarma</h4>
-                    <span><small>By</small> Chinedu Kingsley</span></div>
-                <div class="price"><span> $44,232</span><span class="time">07/02/2021</span></div>
-            </li>
-            <li>
-                <div><h4>Shawarma</h4>
-                    <span><small>By</small> Chinedu Kingsley</span></div>
-                <div class="price"><span> $44,232</span><span class="time">07/02/2021</span></div>
-            </li>
-            <li>
-                <div><h4>Shawarma</h4>
-                    <span><small>By</small> Chinedu Kingsley</span></div>
-                <div class="price"><span> $44,232</span><span class="time">07/02/2021</span></div>
-            </li>
-            <li>
-                <div><h4>Shawarma</h4>
-                    <span><small>By</small> Chinedu Kingsley</span></div>
-                <div class="price"><span> $44,232</span><span class="time">07/02/2021</span></div>
-            </li>
-            <li>
-                <div><h4>Shawarma</h4>
-                    <span><small>By</small> Chinedu Kingsley</span></div>
-                <div class="price"><span> $44,232</span><span class="time">07/02/2021</span></div>
+                <div><h4 th:text="${sale.purchases}">Shawarma</h4>
+                    <span><small>By</small> <span th:text="${sale.customerName}">Chinedu Kingsley</span></span></div>
+                <div class="price"><span th:text="'$' +${sale.amount}"> $44,232</span><span class="time" th:text="${sale.date}">07/02/2021</span></div>
             </li>
         </ul>
     </div>
