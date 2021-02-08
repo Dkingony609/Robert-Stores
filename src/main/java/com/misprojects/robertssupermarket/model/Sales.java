@@ -25,7 +25,8 @@ public class Sales {
     private String amount;
     @Enumerated(value = EnumType.STRING)
     private PaymentMethods paymentMethod;
-    private String staff;
+    @ManyToOne
+    private User staff;
 
 
 }

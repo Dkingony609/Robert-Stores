@@ -23,7 +23,7 @@ public class SaleInfoToSalesMapper {
                 .setCustomerName(salesInfoDto.getCustomerName())
                 .setPurchases(Stream.of(salesInfoDto.getPurchases().split(",")).collect(Collectors.toList()))
                 .setPaymentMethod(PaymentMethods.valueOf(salesInfoDto.getPaymentMethod().toUpperCase()))
-                .setStaff(SecurityContextHolder.getContext().getAuthentication().getName());
+                ;
         log.info(sales.toString());
         return sales;
 

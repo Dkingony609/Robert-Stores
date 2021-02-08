@@ -1,8 +1,11 @@
-package com.misprojects.robertssupermarket.controller;
+package com.misprojects.robertssupermarket.controller.api;
 
+import com.misprojects.robertssupermarket.controller.SalesInfoDto;
 import com.misprojects.robertssupermarket.model.PaymentMethods;
 import com.misprojects.robertssupermarket.model.Sales;
+import com.misprojects.robertssupermarket.model.User;
 import com.misprojects.robertssupermarket.repository.StoreRepository;
+import com.misprojects.robertssupermarket.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +18,11 @@ import java.util.stream.Stream;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("api/v1/sales")
+@RequestMapping("api/v1/store")
 public class StoreRestController {
 
     private final StoreRepository storeRepository;
+    private final UserRepository userRepository;
 
 
     @GetMapping("")
@@ -50,7 +54,8 @@ public class StoreRestController {
 
     @GetMapping("staff")
     public List<Sales> getSalesByStaff(@RequestParam("name") String name) {
-        return storeRepository.findByStaff(name.toLowerCase());
+        User user = userRepository.findByUsername(name).orElseThrow(EntityNotFoundException::new);
+        return storeRepository.findByStaff(user);
     }
 
 
