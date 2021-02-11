@@ -16,7 +16,6 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
-    @JsonIgnore
     @Id
     @GeneratedValue
     private long id;
