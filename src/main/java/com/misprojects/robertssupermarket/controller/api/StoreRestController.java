@@ -8,7 +8,6 @@ import com.misprojects.robertssupermarket.repository.StoreRepository;
 import com.misprojects.robertssupermarket.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
@@ -16,6 +15,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * @author Ibekason ALexander
+ */
 
 @RequiredArgsConstructor
 @RestController
@@ -24,7 +26,6 @@ public class StoreRestController {
 
     private final StoreRepository storeRepository;
     private final UserRepository userRepository;
-
 
     @GetMapping("")
     public List<Sales> getAllSales() {

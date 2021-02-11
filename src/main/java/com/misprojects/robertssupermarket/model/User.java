@@ -7,6 +7,10 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * @author Ibekason ALexander
+ */
+
 @Accessors(chain = true)
 @Data
 @Entity
@@ -18,6 +22,7 @@ public class User {
     private long id;
     private String username;
     private String password;
+    @JsonIgnore
     @OneToMany(mappedBy = "staff")
     private List<Sales> sales;
 }

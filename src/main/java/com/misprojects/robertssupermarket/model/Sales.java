@@ -1,5 +1,6 @@
 package com.misprojects.robertssupermarket.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -25,6 +26,7 @@ public class Sales {
     private String amount;
     @Enumerated(value = EnumType.STRING)
     private PaymentMethods paymentMethod;
+
     @ManyToOne
     private User staff;
 

@@ -14,7 +14,6 @@ import java.util.Collections;
 
 /**
  * @author Ibekason Alexander Onyebuchi
- *
  */
 
 @Configuration
