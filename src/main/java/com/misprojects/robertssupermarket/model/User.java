@@ -21,6 +21,7 @@ public class User {
     @GeneratedValue
     private long id;
     private String username;
+    @JsonIgnore
     private String password;
     @JsonIgnore
     @OneToMany(mappedBy = "staff")
